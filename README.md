@@ -182,7 +182,7 @@ The module may be built using build.
 python -m build
 ```
 ```bash
-pip install 'path/to/panda3d-complexpbr.whl'
+pip install 'path/to/complexpbr.whl'
 ```
 
 ## Relase Notes:
