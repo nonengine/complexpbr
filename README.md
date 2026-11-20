@@ -1,33 +1,11 @@
-# panda3d-complexpbr
-complexpbr is an IBL (Image-Based Lighting) rendering module which supports real-time reflections and post-processing effects in Panda3D. complexpbr supports realtime environment reflections for BSDF materials (the industry standard). Your machine must support GLSL version 430 or higher. Sample screenshots and minimum usage examples below.
+# complexpbr
+complexpbr is an IBL (Image-Based Lighting) rendering module which supports real-time reflections and post-processing effects in nonengine and Panda3D. complexpbr supports realtime environment reflections for BSDF materials (the industry standard). Your machine must support GLSL version 430 or higher. Sample screenshots and minimum usage examples below.
 
 Featuring support for vertex displacement mapping, SSAO (Screen Space Ambient Occlusion), HSV color correction, Bloom, and Sobel based antialiasing in a screenspace kernel shader, which approximates temporal antialiasing. complexpbr.screenspace_init() automatically enables the AA, SSAO, and HSV color correction. To use the vertex displacement mapping, provide your displacement map as a shader input to your respective model node -- example below in the Usage section.
 
 By default, the environment reflections dynamically track the camera view. You may set a custom position with the 'env_cam_pos' apply_shader() input variable to IE fix the view to a skybox somewhere on the scene graph. This env_cam_pos variable can be updated live afterwards by setting base.env_cam_pos = Vec3(some_pos). The option to disable or re-enable dynamic reflections is available. 
 
 The goal of this project is to provide extremely easy to use scene shaders to expose the full functionality of Panda3D rendering, including interoperation with CommonFilters and setting shaders on a per-node basis.
-
-![complexpbr_screen_2](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/a8a7d360-6b52-4fa8-91f8-31f052421043)
- 
-![complexpbr_reflections_2](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/d6d3867a-6dfb-4512-8a79-de80bf35bc26)
-
-10/30/23 Project Naer ([Project Naer complexpbr](https://github.com/rayanalysis/project-naer-complexpbr))
-
-![beige_screen_2](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/89428c83-5e6c-42d3-b30d-372e6ed8bd05)
-
-![silver_screen_1](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/478329ca-ba7c-4adf-b3a1-ae730bf54cc1)
-
-7/6/23 Lumberyard Bistro ([Amazon Lumberyard Bistro | NVIDIA Developer](https://developer.nvidia.com/orca/amazon-lumberyard-bistro))
-
-![bistro_exterior_11](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/0cd476bb-d313-41f4-b5ea-d793589711e4)
-
-![bistro_interior_5](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/ad75afa7-e1ef-41ea-aae9-4bb1cea54135)
-
-![bistro_exterior_10](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/79df6bd6-14d8-4d19-ae5f-45c3418a7607)
-
-6/1/23 Sponza ([Intel GPU Research Samples](https://www.intel.com/content/www/us/en/developer/topic-technology/graphics-research/samples.html))
-
-![sponza_screen_1-Thu-Jun-01-08-28-36-2023-104](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/4e40e642-f363-4328-bf99-4056f449e28a)
 
 ## Minimal Usage:
 ```python
@@ -45,6 +23,20 @@ class main(ShowBase):
 app = main()
 app.run()
 ```
+
+<img width="800" height="450" alt="sponza_screen_3-Wed-Nov-11-16-44-47-2026-856" src="https://github.com/user-attachments/assets/5da99fb8-9488-48df-9066-9b3ca1aa79a7" />
+<img width="800" height="450" alt="sponza_screen_1-Wed-Nov-11-16-54-05-2026-1525" src="https://github.com/user-attachments/assets/e91832f2-9faf-4b13-ac75-87ac3846f35f" />
+<img width="800" height="450" alt="sponza_screen_1-Wed-Nov-11-16-38-32-2026-271" src="https://github.com/user-attachments/assets/63656d30-3266-4a24-b604-3ab10e9fcf57" />
+<img width="800" height="450" alt="arena_screen-Wed-Sep-30-22-12-39-2026-26267" src="https://github.com/user-attachments/assets/7e5a1ed4-563b-4307-8862-e92cf34abfb4" />
+<img width="800" height="450" alt="arena_screen-Sun-Sep-20-04-12-02-2026-786" src="https://github.com/user-attachments/assets/f0cc16f8-b65e-439b-b40b-caf517300507" />
+<img width="800" height="450" alt="arena_screen-Sun-Sep-20-04-07-14-2026-3918" src="https://github.com/user-attachments/assets/182d31af-f207-4208-a189-b633d5b85c5f" />
+<img width="800" height="450" alt="arena_screen-Sun-Sep-20-04-06-54-2026-2691" src="https://github.com/user-attachments/assets/9ecc5188-5d0e-423f-af2d-97186bc8150d" />
+<img width="800" height="450" alt="arena_screen-Fri-Sep-04-06-27-07-2026-19661" src="https://github.com/user-attachments/assets/ebfd88af-2060-4138-b6a1-723ba042aa3d" />
+<img width="800" height="450" alt="arena_screen-Fri-Sep-04-06-03-19-2026-12516" src="https://github.com/user-attachments/assets/8c3f6371-b754-4723-9aa2-5e59d83f8ed2" />
+
+Vertex Displacement Mapping:
+
+![complexpbr_screen_4](https://user-images.githubusercontent.com/3117958/234434178-1e14fa32-2be4-4072-ae15-9ee235d8c036.png)
 
 ## Expanded Usage:
 ```python
@@ -181,7 +173,7 @@ class main(ShowBase):
 
 ## Installing with PyPI:
 ```bash
-pip install panda3d-complexpbr
+pip install complexpbr
 ```
 
 ## Building:
@@ -208,42 +200,9 @@ As of version 0.5.8, an approximation of Global Illumination (GI) is provided vi
 
 As of version 0.6.0, new shader inputs have been made available which increase the usability of scene color adjustment, brightness, and SSR. The remove_shader_files() function has been enhanced, and complexpbr now automatically keeps the shader directory clean while regenerating shader files.
 
+As of version 1.0.0, complexpbr is available on an additional pip namespace (complexpbr as well as panda3d-complexpbr) and is also focusing on nonengine parallel development.
+
 ## Requirements:
 
-- panda3d
-
-
-6/1/23 Sponza ([Intel GPU Research Samples](https://www.intel.com/content/www/us/en/developer/topic-technology/graphics-research/samples.html))
-
-![sponza_screen_1-Thu-Jun-01-08-16-18-2023-26](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/5d6a603f-9da1-49a1-affb-042658f343ed)
-
-![sponza_screen_1-Thu-Jun-01-08-17-47-2023-15](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/7fffc0f4-75b3-476b-a328-127d231b9171)
-
-![sponza_screen_1-Thu-Jun-01-06-02-59-2023-22](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/913a5263-7750-47c1-b4c4-9f7dace84d6e)
-
-![sponza_screen_2-Thu-Jun-01-05-56-06-2023-591](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/b5055164-3235-48fa-86a7-0f6e3222b903)
-
-![sponza_screen_1-Fri-Jun-02-08-54-07-2023-428](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/7a5c3f1f-1bb9-4dec-9e92-92dc52f77f29)
-
-![sponza_screen_1-Thu-Jun-01-05-39-29-2023-111](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/f366077b-b6d6-4c4a-896d-f456a06a53d1)
-
-![sponza_screen_3-Thu-Jun-01-05-56-32-2023-657](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/23014163-4c7d-4a4d-9f6a-4b874ea364f2)
-
-![sponza_screen_1-Thu-Jun-01-05-55-48-2023-540](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/ef2a71c3-169b-428c-a1a9-378c8906c644)
-
-![sponza_screen_2-Thu-Jun-01-08-23-21-2023-1500](https://github.com/rayanalysis/panda3d-complexpbr/assets/3117958/9fbe97e8-d350-480e-bbca-9ef2d5a92b24)
-
-![complexpbr_daytime_screen_1](https://user-images.githubusercontent.com/3117958/235431990-d8ea4364-2526-4739-963c-dce122815f2a.png)
-
-![complexpbr_daytime_screen_2](https://user-images.githubusercontent.com/3117958/235431991-d1f40263-f442-46ed-98a7-056e6186c148.png)
-
-![complexpbr_daytime_screen_3](https://user-images.githubusercontent.com/3117958/235432001-07091c4c-9bc1-4385-81d2-9d50c6fd61b9.png)
-
-![complexpbr_screen_2](https://user-images.githubusercontent.com/3117958/234434099-c6add6ce-578c-4c03-a142-adcf955c14fc.png)
-
-![complexpbr_screen_3](https://user-images.githubusercontent.com/3117958/234434136-9418663d-2304-451b-a318-d3cb4d945a8b.png)
-
-Vertex Displacement Mapping:
-
-![complexpbr_screen_4](https://user-images.githubusercontent.com/3117958/234434178-1e14fa32-2be4-4072-ae15-9ee235d8c036.png)
+- nonengine (or Panda3D)
 
